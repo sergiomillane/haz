@@ -57,7 +57,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
     = particleTable->FindParticle(particleName="e-");
   fParticleGun->SetParticleDefinition(particle);
   //fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0,1,0));
-  fParticleGun->SetParticleEnergy(5.74833*MeV);
+  fParticleGun->SetParticleEnergy(0.1*MeV);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -241,14 +241,14 @@ G4double  phi = twopi*G4UniformRand();
 	//dir.set(sinTheta*std::cos(phi), sinTheta*std::sin(phi), cosTheta);
 	dir.set(0,-1,0);
 
-G4double  GunRadius=0.1;
+G4double  GunRadius=1; //MILIMETROS xd
 
 
 	G4double  rho = G4UniformRand()*GunRadius;
 	G4double  alpha = G4UniformRand()*twopi;
 
 G4double  GunMeanEnergy=10;
-G4double  GunStdEnergy=0.1;
+G4double  GunStdEnergy=0.5;
 
 	pos.setX(rho*std::sin(alpha));
 	pos.setZ(rho*std::cos(alpha));
@@ -256,7 +256,7 @@ G4double  GunStdEnergy=0.1;
 	G4double  ek=G4RandGauss::shoot(GunMeanEnergy, GunStdEnergy);
 	//RandomParticles++;
 	
-	
+//AQUI DOY LAS UNIDADES QUE USARA G4 XD	
  
 	fParticleGun->SetParticlePosition(pos*mm);
 	fParticleGun->SetParticleEnergy(ek*MeV);
@@ -275,5 +275,4 @@ G4double  GunStdEnergy=0.1;
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 }
-
 
